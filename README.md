@@ -64,7 +64,7 @@ All configuration is read from the environment.
 | `QDRANT_AUTH_HEADER` | `api-key` |
 | `OLLAMA_URL` | `http://host.containers.internal:9020` |
 | `EMBED_MODEL` | `bge-m3` |
-| `WORK_DIR` | `/workspace/downloads/gh` |
+| `WORK_DIR` | `$TMPDIR/gh2qdrant/gh` (default; override to keep checkouts elsewhere) |
 
 Never hardcode credentials; export them in your shell instead.
 

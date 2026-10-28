@@ -328,7 +328,9 @@ fn clone_repo(
     url: &str,
     branch: Option<&str>,
 ) -> Result<PathBuf, String> {
-    let work = PathBuf::from(env_or("WORK_DIR", "/workspace/downloads/gh"));
+    let work = std::env::var("WORK_DIR")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| std::env::temp_dir().join("gh2qdrant").join("gh"));
     fs::create_dir_all(&work).map_err(|e| e.to_string())?;
     let dir = work.join(&cfg.repo);
     if dir.join(".git").exists() {
